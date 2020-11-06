@@ -1,0 +1,26 @@
+.dot {
+    height: 150px;
+    width: 150px;
+    border:black;
+    border-radius: 50%;
+    display: inline-block;
+}
+.go{
+    background-color: green;
+}
+.wait{
+    background-color: yellow;
+}
+.stop {
+    background-color: red;
+}
+.box {
+    border: black;
+    border-style: dotted;
+    width: 150px;
+    height: 150px;
+}
+.lightbox{
+    margin-left: 45%;
+    margin-top: 5%;
+}
