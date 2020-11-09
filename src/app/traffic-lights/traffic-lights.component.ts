@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Machine, interpret, StateValue } from 'xstate';
+import { Machine, interpret } from 'xstate';
 
 @Component({
   selector: 'app-traffic-lights',
@@ -7,10 +7,7 @@ import { Machine, interpret, StateValue } from 'xstate';
   styleUrls: ['./traffic-lights.component.css']
 })
 export class TrafficLightsComponent implements OnInit {
-
-  public stop: boolean;
-  public go: boolean;
-  public wait: boolean;
+  public state: string;
   constructor() { }
 
   ngOnInit() {
@@ -18,13 +15,10 @@ export class TrafficLightsComponent implements OnInit {
 
     setInterval(() => {
       promiseService.send('TIMEOUT');
-  }, 5000);
+  }, 3000);
 
     promiseService.onTransition(state => {
-      console.log(state.value);
-      this.stop = state.matches('stop');
-      this.go = state.matches('go');
-      this.wait = state.matches('wait');
+      this.state = state.value.toString();
     }
   );
 

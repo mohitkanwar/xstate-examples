@@ -1,12 +1,12 @@
 <div class="lightbox">
     <div class="box">
-        <div class="dot " [ngClass]="{'go' : go}"></div>
+        <div class="dot " [ngClass]="{'go' : state=='go'}"></div>
     </div>
     <div class="box">
-        <div class="dot" [ngClass]="{'wait' : wait}"></div>
+        <div class="dot" [ngClass]="{'wait' : state=='wait'}"></div>
     </div>
     <div class="box">
-        <div class="dot" [ngClass]="{'stop' : stop}"></div>
+        <div class="dot" [ngClass]="{'stop' : state=='stop'}"></div>
     </div>
     
 </div>
