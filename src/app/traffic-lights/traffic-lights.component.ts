@@ -8,24 +8,41 @@ import { Machine, interpret } from 'xstate';
 })
 export class TrafficLightsComponent implements OnInit {
   public state: string;
+  public pedState: string;
   constructor() { }
 
   ngOnInit() {
-    promiseService.start();
-
-    setInterval(() => {
-      promiseService.send('TIMEOUT');
-  }, 3000);
-
-    promiseService.onTransition(state => {
+    trafficLightService.start();
+    trafficLightService.onTransition(state => {
       this.state = state.value.toString();
+      if (state.value.hasOwnProperty('stop')){
+        this.state = 'stop';
+        // tslint:disable-next-line:no-string-literal
+        this.pedState = state.value['stop'];
+        console.log(this.pedState);
+      }
     }
   );
-
-  }
+    setInterval(() => trafficLightService.send('TIMEOUT'), 1000);
 
 }
-
+}
+const pedestrianStates = {
+  initial: 'walk',
+  states: {
+    walk: {
+      on: {
+        TIMEOUT: 'wait'
+      }
+    },
+    wait: {
+      on: {
+        TIMEOUT: 'stop'
+      }
+    },
+    stop: {}
+  }
+};
 const trafficLightMachine = Machine({
   id: 'trafficLight',
   initial: 'go',
@@ -43,9 +60,10 @@ const trafficLightMachine = Machine({
     stop: {
       on: {
         TIMEOUT: 'go'
-      }
+      },
+      ...pedestrianStates
     }
   }
 });
 
-const promiseService = interpret(trafficLightMachine);
+const trafficLightService = interpret(trafficLightMachine);

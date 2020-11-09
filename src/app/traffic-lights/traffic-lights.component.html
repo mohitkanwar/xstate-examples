@@ -1,13 +1,29 @@
-<div class="lightbox">
-    <div class="box">
-        <div class="dot " [ngClass]="{'go' : state=='go'}"></div>
-    </div>
-    <div class="box">
-        <div class="dot" [ngClass]="{'wait' : state=='wait'}"></div>
-    </div>
-    <div class="box">
-        <div class="dot" [ngClass]="{'stop' : state=='stop'}"></div>
-    </div>
-    
-</div>
 
+<div class="outer">
+    <div class="lightbox">
+        <div class="box">
+            <div class="dot " [ngClass]="{'go' : state=='go'}"></div>
+        </div>
+        <div class="box">
+            <div class="dot" [ngClass]="{'wait' : state=='wait'}"></div>
+        </div>
+        <div class="box">
+            <div class="dot" [ngClass]="{'stop' : state=='stop'}"></div>
+        </div>
+            CAR
+    </div>
+
+    <div class="pedestrian">
+        <div class="box">
+            <div class="dot " [ngClass]="{'go' : pedState=='walk'}"></div>
+        </div>
+        <div class="box">
+            <div class="dot" [ngClass]="{'wait' : pedState=='wait'}"></div>
+        </div>
+        <div class="box">
+            <div class="dot" [ngClass]="{'stop' : pedState=='stop'}"></div>
+        </div>
+        Pedestrian
+    </div>
+
+</div>

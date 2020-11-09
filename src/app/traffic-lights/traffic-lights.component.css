@@ -21,6 +21,13 @@
     height: 150px;
 }
 .lightbox{
-    margin-left: 45%;
+    margin-left: 30%;
     margin-top: 5%;
+}
+.pedestrian{
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.outer {
+    display: flex;
 }
