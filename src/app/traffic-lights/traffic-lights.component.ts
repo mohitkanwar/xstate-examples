@@ -19,6 +19,7 @@ export class TrafficLightsComponent implements OnInit {
 
     promiseService.onTransition(state => {
       this.state = state.value.toString();
+      console.log(this.state);
     }
   );
 
